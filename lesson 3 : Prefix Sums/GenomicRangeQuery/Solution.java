@@ -25,14 +25,20 @@ class Solution {
                 posOfG[i+1] = 1;
             if (S.charAt(i) == 'T')
                 posOfT[i+1] = 1;
-        }
-        for (int i = 1; i <= N; i++) {
+            
             // prefix sum of the array
-            posOfA[i] += posOfA[i-1];
-            posOfC[i] += posOfC[i-1];
-            posOfG[i] += posOfG[i-1];
-            posOfT[i] += posOfT[i-1];
+            posOfA[i + 1] += posOfA[i];
+            posOfC[i + 1] += posOfC[i];
+            posOfG[i + 1] += posOfG[i];
+            posOfT[i + 1] += posOfT[i];
         }
+//        for (int i = 1; i <= N; i++) {
+//            // prefix sum of the array
+//            posOfA[i] += posOfA[i-1];
+//            posOfC[i] += posOfC[i-1];
+//            posOfG[i] += posOfG[i-1];
+//            posOfT[i] += posOfT[i-1];
+//        }
         for (int i = 0; i < M; i++) {
             // calculate the sum between P[i] and Q[i] in O(1) time complexity
             // if the value is not zero, then A has appeared in the slice.
